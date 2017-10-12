@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Neighbourhood Map Project</title>
+        <!-- css resources -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="titleBar">
+        <div id="header" class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand">Neighbourhood Map</span>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse">
+            <div id="cafelist">
+                <input placeholder="Cafes" class="form-control" type="search" data-bind="textInput: query">
+                <ul class="nav" data-bind="foreach: CafeFilter">
+                    <li>
+                        <a class="btn buttoncss" data-bind="click: $parent.CafeSelect" >
+                            <div class="text-left cafe" data-bind="text: name"></div>
+                            <div class="text-left info" data-bind="text: address"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main id="main" class="container-fluid">
+        <div id="map"></div>
+        <div id="error" data-bind="css: { 'show-error': errorMessage }"><span data-bind="text: errorMessage"></span></div>
+    </main>
+    <!-- js resources -->
+    <script src="js/knockout-min-3.4.1.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDskn0uiC1pCyQMFIiZ6mVq1oEekf2Jf9U&callback=initMap" async defer onerror="mapError()"></script>
+    </body>
+</html>
